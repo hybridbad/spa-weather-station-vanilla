@@ -1,5 +1,5 @@
 import { api } from '../../services/api.mjs';
-import Utils from '../../services/helper-methods.mjs';
+// import Utils from '../../services/helper-methods.mjs';
 
 let Home = {
   render: function() {
@@ -7,25 +7,24 @@ let Home = {
     <h3> Head line page </h3>
     </section>
     `;
-    api.getArticles();
+    api.getData();
     return view;
   }
 };
 
-let ArticleShow = {
+let ShowChart = {
   render: function() {
     let view = `<section class = 'section'>
-    <h3> Summary </h3>
+    <h3> Chart </h3>
     </section>
     `;
-
-    let article = Utils.parseRequestURL();
-    api.createSummary(article.id);
-
+    api.getWeatherChart();
     return view;
+    // let article = Utils.parseRequestURL();
+    // api.createSummary(article.id);
   }
 };
 
 let Error404 = {};
 
-export { Home, ArticleShow, Error404 };
+export { Home, ShowChart, Error404 };

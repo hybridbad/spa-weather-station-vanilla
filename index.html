@@ -5,10 +5,11 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="app.js"></script>
-
-    <title>News Summary</title>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <title>Charts</title>
   </head>
   <body>
     <div id="page_container"></div>
@@ -16,5 +17,10 @@
     <div class="d-flex justify-content-center">
       <div id="weather-data"></div>
     </div>
+
+    <canvas id="all" width="400" height="100"></canvas>
+    <canvas id="temp" width="400" height="100"></canvas>
+    <canvas id="hum" width="400" height="100"></canvas>
+    <canvas id="press" width="400" height="100"></canvas>
   </body>
 </html>
