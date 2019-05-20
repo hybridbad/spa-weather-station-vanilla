@@ -38,7 +38,7 @@ const Utils = {
     return list;
   },
 
-  outputArticlesHTML: list => {
+  outputWeatherObjectsTable: list => {
     let html = '';
     html += `<table>`;
     html += `<tr>`;
@@ -56,6 +56,45 @@ const Utils = {
     }
     html += `</table>`;
     document.getElementById('weather-data').innerHTML = html;
+  },
+
+  createWeatherChart: response => {
+    let apiData = response;
+    let tempData = [];
+    let id = [];
+    apiData.forEach(res => {
+      tempData.push(res.temperature);
+      id.push(res._id);
+    });
+    // let html = `${apiData}`;
+    let test = `
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: id,
+        datasets: [
+          {
+            label: '# of Votes',
+            data: tempData
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });`;
+
+    // document.getElementById('weather-data').innerHTML = html;
+    document.getElementById('weather-data').innerHTML = eval(test);
   }
 };
 

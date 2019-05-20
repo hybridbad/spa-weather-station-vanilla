@@ -1,11 +1,11 @@
 'use strict';
 
-import { Home, ArticleShow, Error404 } from './views/pages/pages.mjs';
+import { Home, ShowChart, Error404 } from './views/pages/pages.mjs';
 import Utils from './services/helper-methods.mjs';
 
 const routes = {
   '/': Home,
-  '/summary/:id': ArticleShow
+  '/charts': ShowChart
 };
 
 const router = function() {
