@@ -20,8 +20,6 @@ let ShowChart = {
     `;
     api.getWeatherChart();
     return view;
-    // let article = Utils.parseRequestURL();
-    // api.createSummary(article.id);
   }
 };
 

@@ -31,7 +31,9 @@ let api = {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
         let apiData = JSON.parse(xhr.response);
-        Utils.createWeatherChart(apiData);
+        let response = Utils.createWeatherObjects(apiData);
+        // Utils.createWeatherChart(apiData);
+        Utils.createWeatherChart(response);
       }
     };
   }

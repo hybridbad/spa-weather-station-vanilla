@@ -13,13 +13,29 @@ class WeatherTableData {
     return result[0];
   }
 
-  // getTemperature()
-  // getPressure()
-  // getHumidity
+  getTemperatureData() {
+    let result = this.list.map(record => record.temperature);
+    return result;
+  }
+
+  getHumidityData() {
+    let result = this.list.map(record => record.humidity);
+    return result;
+  }
+
+  getPressureData() {
+    let result = this.list.map(record => record.pressure);
+    return result;
+  }
+
+  getDatesData() {
+    let result = this.list.map(record => record.date);
+    return result;
+  }
 
   getTableData() {
     return this.list;
   }
 }
-module.exports = WeatherTableData;
-// export default WeatherTableData;
+
+export default WeatherTableData;
