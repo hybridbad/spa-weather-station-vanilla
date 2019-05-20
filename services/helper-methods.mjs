@@ -79,10 +79,6 @@ const Utils = {
     let minHum = humData.reduce((a, b) => {
       return parseInt(Math.min(a, b));
     });
-
-    console.log(maxHum);
-    console.log(minHum);
-
     // let html = `${apiData}`;
     let all = `
     var ctx = document.getElementById('all').getContext('2d');

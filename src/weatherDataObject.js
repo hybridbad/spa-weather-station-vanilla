@@ -26,6 +26,6 @@ class WeatherDataObject {
   }
 }
 
-module.exports = WeatherDataObject;
+// module.exports = WeatherDataObject;
 
-// export default WeatherDataObject;
+export default WeatherDataObject;

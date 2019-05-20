@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start:local": "cross-env NODE_ENV=localhost babel-node -- app.js",
+    "start": "node node_modules/http-server/bin/http-server -p 8080",
     "babel-node": "babel-node --presets=env"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "nyc": "^14.1.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.4",
     "babel-jest": "^20.0.3",
     "babel-preset-jest": "^24.6.0",
     "eslint": "^5.16.0",
