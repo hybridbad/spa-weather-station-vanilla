@@ -21,5 +21,5 @@ class WeatherTableData {
     return this.list;
   }
 }
-// module.exports = WeatherTableData;
-export default WeatherTableData;
+module.exports = WeatherTableData;
+// export default WeatherTableData;
