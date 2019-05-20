@@ -1,7 +1,11 @@
 {
   "presets": [
-    ["env", {
-      "targets:": { "node": "11.14.0" } // change this to your node version
-    }]
+    ["env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }],
+    "jest"
   ]
 }

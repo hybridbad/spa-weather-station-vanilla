@@ -3,28 +3,11 @@
 'use strict';
 var WeatherObject = require('../src/weatherDataObject');
 
-var { describe, it, expect } = require('../services/testing-framework');
-
 let weatherObject = new WeatherObject(100, 1039, 50, '2019-01-22');
 
 describe('Weather Object', function() {
   it('creates an Weather Object instance', function() {
-    expect(weatherObject).toBeInstanceof(WeatherObject);
-  });
-
-  it('responds to getTemperature method', function() {
-    expect(weatherObject).toRespondTo('getTemperature');
-  });
-
-  it('responds to getPressure method', function() {
-    expect(weatherObject).toRespondTo('getPressure');
-  });
-  it('responds to getHumidity method', function() {
-    expect(weatherObject).toRespondTo('getHumidity');
-  });
-
-  it('responds to getDate method', function() {
-    expect(weatherObject).toRespondTo('getDate');
+    expect(weatherObject).toBeInstanceOf(WeatherObject);
   });
 
   it('returns temperature value', function() {

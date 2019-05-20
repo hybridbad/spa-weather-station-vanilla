@@ -4,8 +4,9 @@
   "description": "## SPA",
   "main": "app.js",
   "scripts": {
-    "test": "node test/weatherObject-test.js & node test/weatherTableData-test.js",
-    "start": "node node_modules/http-server/bin/http-server -p 8080"
+    "test": "jest --verbose --coverage",
+    "start:local": "cross-env NODE_ENV=localhost babel-node -- app.js",
+    "babel-node": "babel-node --presets=env"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,31 @@
     "url": "https://github.com/hybridbad/spa-weather-station-vanilla.git/issues"
   },
   "homepage": "https://github.com/hybridbad/spa-weather-station-vanilla.git#readme",
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0"
+  },
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-preset-jest": "^24.6.0",
     "eslint": "^5.16.0",
     "http-server": "^0.11.1"
   },
   "dependencies": {
-    "chart.js": "^2.8.0"
+    "chart.js": "^2.8.0",
+    "jest": "^24.8.0",
+    "nyc": "^14.1.1"
+  },
+  "jest": {
+    "testURL": "http://localhost:8080",
+    "testEnvironment": "node"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "check-coverage": true
   }
 }

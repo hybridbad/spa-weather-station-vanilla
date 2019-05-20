@@ -2,8 +2,6 @@
 'use strict';
 var WeatherTableData = require('../src/weatherTableData');
 
-var { describe, it, expect } = require('../services/testing-framework');
-
 let weatherDataObject = {
   temperature: 20,
   pressure: 1039,
@@ -13,8 +11,7 @@ let weatherDataObject = {
 
 describe('weather table', function() {
   it('creates a table instance', function() {
-    let weatherTableData = new WeatherTableData();
-    expect(weatherTableData).toBeInstanceof(WeatherTableData);
+    expect(new WeatherTableData()).toBeInstanceOf(WeatherTableData);
   });
 
   it('adds an article to the list', function() {
