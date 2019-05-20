@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 'use strict';
-var WeatherObject = require('../src/weatherDataObject');
+// var WeatherObject = require('../src/weatherDataObject');
+import WeatherObject from '../src/weatherDataObject'
 
 let weatherObject = new WeatherObject(100, 1039, 50, '2019-01-22');
 

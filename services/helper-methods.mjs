@@ -72,13 +72,13 @@ const Utils = {
       id.push(new Date(res.date).toLocaleString());
     });
 
-    let maxHum = humData.reduce((a, b) => {
-      return parseInt(Math.max(a, b));
-    });
+    // let maxHum = humData.reduce((a, b) => {
+    //   return parseInt(Math.max(a, b));
+    // });
 
-    let minHum = humData.reduce((a, b) => {
-      return parseInt(Math.min(a, b));
-    });
+    // let minHum = humData.reduce((a, b) => {
+    //   return parseInt(Math.min(a, b));
+    // });
     // let html = `${apiData}`;
     let all = `
     var ctx = document.getElementById('all').getContext('2d');

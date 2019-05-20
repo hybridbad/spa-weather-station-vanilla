@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 'use strict';
-var WeatherTableData = require('../src/weatherTableData');
+// var WeatherTableData = require('../src/weatherTableData');
+import WeatherTableData from '../src/weatherTableData'
 
 let weatherDataObject = {
   temperature: 20,
