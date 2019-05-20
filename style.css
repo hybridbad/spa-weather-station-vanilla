@@ -1,0 +1,46 @@
+<<<<<<< HEAD
+body {
+  background: lightskyblue;
+=======
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 0 0;
+  }
+}
+
+@media all and (min-width: 800px) {
+  .main {
+    flex: 3 0px;
+  }
+  .aside-1 {
+    order: 1;
+  }
+  .main {
+    order: 2;
+  }
+}
+
+.accent-color {
+  color: green;
+}
+
+.menu-color {
+  color: green;
+}
+
+.online {
+  color: green;
+>>>>>>> 07d89a876b487e5c002a67ba30d61d23b4313db8
+}
