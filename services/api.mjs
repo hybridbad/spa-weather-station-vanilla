@@ -3,7 +3,7 @@ let xhr = new XMLHttpRequest();
 
 let api = {
   getData: function() {
-    let url = `http://e56e5040.ngrok.io/api/data`;
+    let url = `https://quiet-everglades-27917.herokuapp.com/api/data`;
 
     xhr.open('GET', url, true);
     xhr.send();
@@ -23,7 +23,7 @@ let api = {
   },
 
   getWeatherChart: function() {
-    let url = `http://e56e5040.ngrok.io/api/data`;
+    let url = `https://quiet-everglades-27917.herokuapp.com/api/data`;
 
     xhr.open('GET', url, true);
     xhr.send();

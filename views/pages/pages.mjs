@@ -16,7 +16,6 @@ let ShowChart = {
   render: function() {
     let view = `<section class = 'section'>
     <h3> Chart </h3>
-    
     </section>
     `;
     api.getWeatherChart();

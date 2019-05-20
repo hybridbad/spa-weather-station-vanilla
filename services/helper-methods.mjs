@@ -61,40 +61,104 @@ const Utils = {
   createWeatherChart: response => {
     let apiData = response;
     let tempData = [];
+    let humData = [];
+    let pressData = [];
     let id = [];
     apiData.forEach(res => {
       tempData.push(res.temperature);
-      id.push(res._id);
+      humData.push(parseFloat(res.humidity));
+      pressData.push(res.pressure);
+      id.push(new Date(res.date).toLocaleString());
     });
+
+    let maxHum = humData.reduce((a, b) => {
+      return parseInt(Math.max(a, b));
+    });
+
+    let minHum = humData.reduce((a, b) => {
+      return parseInt(Math.min(a, b));
+    });
+
+    console.log(maxHum);
+    console.log(minHum);
+
     // let html = `${apiData}`;
-    let test = `
-    var ctx = document.getElementById('myChart').getContext('2d');
+    let temperature = `
+    var ctx = document.getElementById('temp').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: id.slice(1, 100),
+        datasets: [
+          {
+            label: 'temperature',
+            borderColor: 'rgba(250, 120, 80, 0.1)',
+            backgroundColor: 'rgba(250, 120, 80, 0.1)',
+            data: tempData.slice(1,100),
+            yAxisID:'A'
+          },{
+            label: 'humidity',
+            borderColor: 'rgba(123, 12, 80, 0.1)',
+            backgroundColor: 'rgba(123, 12, 80, 0.1)',
+            data: humData.slice(1, 100),
+            yAxisID:'B'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            id:'A',
+            type:'linear',
+            position:'left',
+          }, {
+            id: 'B',
+            type:'linear',
+            position:'right',
+            ticks:{
+              max:maxHum+10,
+              min:minHum-10
+            }
+          }]
+        }
+      }
+    });`;
+
+    let humidity = `
+    var ctx = document.getElementById('hum').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: id,
         datasets: [
           {
-            label: '# of Votes',
-            data: tempData
-          }
+            label: 'humidity',
+            data: humData
+          },
         ]
       },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
-            }
-          ]
-        }
-      }
+
     });`;
 
+    let pressure = `
+    var ctx = document.getElementById('press').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: id,
+        datasets: [
+          {
+            label: 'humidity',
+            data: pressData
+          },
+        ]
+      },
+
+    });`;
     // document.getElementById('weather-data').innerHTML = html;
-    document.getElementById('weather-data').innerHTML = eval(test);
+    document.getElementById('temp').innerHTML = eval(temperature);
+    document.getElementById('hum').innerHTML = eval(humidity);
+    document.getElementById('press').innerHTML = eval(pressure);
   }
 };
 
