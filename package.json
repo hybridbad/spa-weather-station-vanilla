@@ -1,55 +1,24 @@
 {
-  "name": "spa-weather-station",
+  "name": "WeatherSPA",
   "version": "1.0.0",
-  "description": "Single page app in vue js for weather station",
+  "description": "## SPA",
+  "main": "app.js",
   "scripts": {
-    "start": "http-server",
-    "test": "jest"
+    "test": "node test/weatherObject-test.js & node test/weatherTableData-test.js",
+    "start": "node node_modules/http-server/bin/http-server -p 8080"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hybridbad/spa-weather-station.git"
+    "url": "git+https://github.com/hybridbad/spa-weather-station-vanilla.git"
   },
-  "author": " (placeholder)",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hybridbad/spa-weather-station/issues"
+    "url": "https://github.com/hybridbad/spa-weather-station-vanilla.git/issues"
   },
-  "homepage": "https://github.com/hybridbad/spa-weather-station#readme",
+  "homepage": "https://github.com/hybridbad/spa-weather-station-vanilla.git#readme",
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.13",
-    "babel-jest": "^21.2.0",
-    "babel-preset-env": "^1.6.0",
-    "chromedriver": "^74.0.0",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-vue": "^5.2.2",
-    "geckodriver": "^1.16.2",
-    "http-server": "^0.11.1",
-    "jest": "^24.8.0",
-    "jsdom": "^15.1.0",
-    "jsdom-global": "^3.0.2",
-    "nightwatch": "^1.0.19",
-    "regenerator-runtime": "^0.11.0",
-    "selenium-webdriver": "^4.0.0-alpha.1",
-    "vue-jest": "^3.0.4",
-    "vue-template-compiler": "^2.4.4"
-  },
-  "dependencies": {
-    "vue": "^2.6.10"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/*.{js,vue}",
-      "!**/node_modules/**",
-      "!**/coverage/**"
-    ]
+    "http-server": "^0.11.1"
   }
 }
