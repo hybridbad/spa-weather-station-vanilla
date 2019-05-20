@@ -1,10 +1,9 @@
 import { api } from '../../services/api.mjs';
-// import Utils from '../../services/helper-methods.mjs';
 
 let Home = {
   render: function() {
     let view = `<section class = 'section'>
-    <h3> Head line page </h3>
+    <h3> Weather Station</h3>
     </section>
     `;
     api.getData();
@@ -20,8 +19,6 @@ let ShowChart = {
     `;
     api.getWeatherChart();
     return view;
-    // let article = Utils.parseRequestURL();
-    // api.createSummary(article.id);
   }
 };
 
