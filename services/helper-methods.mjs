@@ -64,6 +64,7 @@ const Utils = {
     let humData = [];
     let pressData = [];
     let id = [];
+
     apiData.forEach(res => {
       tempData.push(res.temperature);
       humData.push(parseFloat(res.humidity));
@@ -83,8 +84,8 @@ const Utils = {
     console.log(minHum);
 
     // let html = `${apiData}`;
-    let temperature = `
-    var ctx = document.getElementById('temp').getContext('2d');
+    let all = `
+    var ctx = document.getElementById('all').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -97,11 +98,17 @@ const Utils = {
             data: tempData.slice(1,100),
             yAxisID:'A'
           },{
-            label: 'humidity',
+            label: 'pressure',
             borderColor: 'rgba(123, 12, 80, 0.1)',
             backgroundColor: 'rgba(123, 12, 80, 0.1)',
-            data: humData.slice(1, 100),
+            data: pressData.slice(1, 100),
             yAxisID:'B'
+          },
+          {
+            label: 'humidity',
+            borderColor: 'rgba(50, 59, 80, 0.1)',
+            backgroundColor: 'rgba(50, 59, 80, 0.1)',
+            data: humData.slice(1, 100),
           }
         ]
       },
@@ -111,23 +118,40 @@ const Utils = {
             id:'A',
             type:'linear',
             position:'left',
+            
           }, {
             id: 'B',
             type:'linear',
             position:'right',
             ticks:{
-              max:maxHum+10,
-              min:minHum-10
+              max:1013,
+              min:1011
             }
           }]
         }
       }
     });`;
 
+    let temperature = `
+    var ctx = document.getElementById('temp').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: id,
+        datasets: [
+          {
+            label: 'temperature',
+            data: tempData
+          },
+        ]
+      },
+
+    });`;
+
     let humidity = `
     var ctx = document.getElementById('hum').getContext('2d');
     var myChart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: id,
         datasets: [
@@ -156,6 +180,7 @@ const Utils = {
 
     });`;
     // document.getElementById('weather-data').innerHTML = html;
+    document.getElementById('all').innerHTML = eval(all);
     document.getElementById('temp').innerHTML = eval(temperature);
     document.getElementById('hum').innerHTML = eval(humidity);
     document.getElementById('press').innerHTML = eval(pressure);
