@@ -2,7 +2,7 @@
 
 import { Home, ShowChart, Error404 } from './views/pages/pages.mjs';
 import Utils from './services/helper-methods.js';
-import {api} from './services/api.mjs';
+import {dateRangePicker} from './services/date-range-filter.js';
 
 const routes = {
   '/': Home,
@@ -31,22 +31,6 @@ const router = function() {
 
 const onLoad = function() {
   
-  console.log("what");
-  let dateRangePicker = {
-    init: function() {
-      const that = this;
-      $('.datetimepicker').datetimepicker();
-      this.initial = $('#datetimepicker-initial');
-      this.final = $('#datetimepicker-final');
-      this.submit = $('#datetimepicker-submit');
-      this.submit.click(function(){
-        const initial = new Date(that.initial.val());
-        const final = new Date(that.final.val());
-        console.log(final);
-        api.getDataByDates(initial, final);
-      })
-    }
-  };
   dateRangePicker.init();
 
   router();
