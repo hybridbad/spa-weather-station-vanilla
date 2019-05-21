@@ -1,7 +1,7 @@
 'use strict';
 
 import { Home, ShowChart, Error404 } from './views/pages/pages.mjs';
-import Utils from './services/helper-methods.mjs';
+import Utils from './services/helper-methods.js';
 
 const routes = {
   '/': Home,

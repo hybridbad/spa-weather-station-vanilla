@@ -77,9 +77,4 @@ describe('weather table', function() {
     weatherTableData.addData(weatherDataObject2);
     expect(weatherTableData.getRecord(2)).toEqual(weatherDataObject2);
   });
-
-  it('adds a 0 if < 10', function() {
-    let weatherTableData = new WeatherTableData();
-    expect(weatherTableData.addZero(1)).toEqual('01');
-  });
 });

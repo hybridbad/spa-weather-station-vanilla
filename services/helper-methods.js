@@ -3,6 +3,7 @@ import weatherDataObject from '../src/weatherDataObject.js';
 import temperature from '../views/components/temperatureChart.js';
 import humidity from '../views/components/humidityChart.js';
 import pressure from '../views/components/pressureChart.js';
+import DateConverter from '../services/date-processor.js';
 import all from '../views/components/allCharts.js';
 
 let list = new weatherTableData();
@@ -73,20 +74,7 @@ const Utils = {
     let humidity = parseFloat(list[length - 1].humidity).toFixed(2);
     let pressure = parseFloat(list[length - 1].pressure).toFixed(2);
 
-    //Date
-    function addZero(i) {
-      //adds a 0 if <10
-      if (i < 10) {
-        i = '0' + i;
-      }
-      return i;
-    }
-    let date = new Date(list[length - 1].date);
-    let hours = addZero(date.getHours());
-    let minutes = addZero(date.getMinutes());
-    let seconds = addZero(date.getSeconds());
-    let time = hours + ':' + minutes + ':' + seconds;
-    //Date
+    let time = DateConverter.processDate(list[length - 1].date);
 
     document.getElementById('temperaturePoint').innerHTML = temperature;
     document.getElementById('humidityPoint').innerHTML = humidity;
@@ -97,9 +85,13 @@ const Utils = {
   // Creates a chart based on the available data
   createWeatherChart: response => {
     let data = response;
+    // eslint-disable-next-line no-unused-vars
     let tempData = data.getTemperatureData();
+    // eslint-disable-next-line no-unused-vars
     let humData = data.getHumidityData();
+    // eslint-disable-next-line no-unused-vars
     let pressData = data.getPressureData();
+    // eslint-disable-next-line no-unused-vars
     let id = data.getDatesData();
 
     // document.getElementById('weather-data').innerHTML = html;
