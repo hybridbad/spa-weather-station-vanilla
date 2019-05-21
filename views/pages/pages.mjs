@@ -6,6 +6,7 @@ let Home = {
     <h3> Weather Station</h3>
     </section>
     `;
+
     api.getData();
     return view;
   }

@@ -1,5 +1,9 @@
 import weatherTableData from '../src/weatherTableData.js';
 import weatherDataObject from '../src/weatherDataObject.js';
+import temperature from '../views/components/temperatureChart.js';
+import humidity from '../views/components/humidityChart.js';
+import pressure from '../views/components/pressureChart.js';
+import all from '../views/components/allCharts.js';
 
 let list = new weatherTableData();
 
@@ -38,145 +42,68 @@ const Utils = {
     return list;
   },
 
+  // Output table with all Data
   outputWeatherObjectsTable: list => {
     let html = '';
-    html += `<table>`;
+    html += `<table class="table table-striped">`;
+    html += `<thead class="thead-inverse">`;
     html += `<tr>`;
     html += `<th>Temperature</th>`;
     html += `<th>Pressure</th>`;
     html += `<th>Humidity</th>`;
+    html += `<th>Date</th>`;
     html += `</tr>`;
-    for (let i = 0; i < list.length; i++) {
+    html += `</thead>`;
+    for (let i = list.length - 1; i > list.length - 12; i--) {
       const element = list[i];
       html += `<tr>`;
-      html += `<td>${element.temperature}</td>`;
-      html += `<td>${element.pressure}</td>`;
-      html += `<td>${element.humidity}</td>`;
+      html += `<td>${parseFloat(element.temperature).toFixed(2)}</td>`;
+      html += `<td>${parseFloat(element.pressure).toFixed(2)}</td>`;
+      html += `<td>${parseFloat(element.humidity).toFixed(2)}</td>`;
+      html += `<td>${new Date(element.date).toLocaleString()}</td>`;
       html += `</tr>`;
     }
     html += `</table>`;
     document.getElementById('weather-data').innerHTML = html;
   },
 
-  createWeatherChart: response => {
-    let apiData = response;
-    let tempData = [];
-    let humData = [];
-    let pressData = [];
-    let id = [];
+  updateWeatherPointsDashboard: list => {
+    let length = list.length;
+    let temperature = parseFloat(list[length - 1].temperature).toFixed(2);
+    let humidity = parseFloat(list[length - 1].humidity).toFixed(2);
+    let pressure = parseFloat(list[length - 1].pressure).toFixed(2);
 
-    apiData.forEach(res => {
-      tempData.push(res.temperature);
-      humData.push(parseFloat(res.humidity));
-      pressData.push(res.pressure);
-      id.push(new Date(res.date).toLocaleString());
-    });
-
-    // let maxHum = humData.reduce((a, b) => {
-    //   return parseInt(Math.max(a, b));
-    // });
-
-    // let minHum = humData.reduce((a, b) => {
-    //   return parseInt(Math.min(a, b));
-    // });
-    // let html = `${apiData}`;
-    let all = `
-    var ctx = document.getElementById('all').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: id.slice(1, 100),
-        datasets: [
-          {
-            label: 'temperature',
-            borderColor: 'rgba(250, 120, 80, 0.1)',
-            backgroundColor: 'rgba(250, 120, 80, 0.1)',
-            data: tempData.slice(1,100),
-            yAxisID:'A'
-          },{
-            label: 'pressure',
-            borderColor: 'rgba(123, 12, 80, 0.1)',
-            backgroundColor: 'rgba(123, 12, 80, 0.1)',
-            data: pressData.slice(1, 100),
-            yAxisID:'B'
-          },
-          {
-            label: 'humidity',
-            borderColor: 'rgba(50, 59, 80, 0.1)',
-            backgroundColor: 'rgba(50, 59, 80, 0.1)',
-            data: humData.slice(1, 100),
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            id:'A',
-            type:'linear',
-            position:'left',
-            
-          }, {
-            id: 'B',
-            type:'linear',
-            position:'right',
-            ticks:{
-              max:1013,
-              min:1011
-            }
-          }]
-        }
+    //Date
+    function addZero(i) {
+      //adds a 0 if <10
+      if (i < 10) {
+        i = '0' + i;
       }
-    });`;
+      return i;
+    }
+    let date = new Date(list[length - 1].date);
+    let hours = addZero(date.getHours());
+    let minutes = addZero(date.getMinutes());
+    let seconds = addZero(date.getSeconds());
+    let time = hours + ':' + minutes + ':' + seconds;
+    //Date
 
-    let temperature = `
-    var ctx = document.getElementById('temp').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: id,
-        datasets: [
-          {
-            label: 'temperature',
-            data: tempData
-          },
-        ]
-      },
+    document.getElementById('temperaturePoint').innerHTML = temperature;
+    document.getElementById('humidityPoint').innerHTML = humidity;
+    document.getElementById('pressurePoint').innerHTML = pressure;
+    document.getElementById('datePoint').innerHTML = time;
+  },
 
-    });`;
+  // Creates a chart based on the available data
+  createWeatherChart: response => {
+    let data = response;
+    let tempData = data.getTemperatureData();
+    let humData = data.getHumidityData();
+    let pressData = data.getPressureData();
+    let id = data.getDatesData();
 
-    let humidity = `
-    var ctx = document.getElementById('hum').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: id,
-        datasets: [
-          {
-            label: 'humidity',
-            data: humData
-          },
-        ]
-      },
-
-    });`;
-
-    let pressure = `
-    var ctx = document.getElementById('press').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: id,
-        datasets: [
-          {
-            label: 'humidity',
-            data: pressData
-          },
-        ]
-      },
-
-    });`;
     // document.getElementById('weather-data').innerHTML = html;
-    document.getElementById('all').innerHTML = eval(all);
+    // document.getElementById('all').innerHTML = eval(all);
     document.getElementById('temp').innerHTML = eval(temperature);
     document.getElementById('hum').innerHTML = eval(humidity);
     document.getElementById('press').innerHTML = eval(pressure);
