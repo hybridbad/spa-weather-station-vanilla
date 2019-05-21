@@ -7,6 +7,8 @@ let temperature = `
       datasets: [
         {
           label: 'temperature',
+          borderColor: 'rgba(120, 120, 80, 0.1)',
+            backgroundColor: 'rgba(8, 221, 47, 0.3)',
           data: tempData
         },
       ]

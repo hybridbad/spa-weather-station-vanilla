@@ -9,20 +9,20 @@ var myChart = new Chart(ctx, {
         label: 'temperature',
         borderColor: 'rgba(250, 120, 80, 0.1)',
         backgroundColor: 'rgba(250, 120, 80, 0.1)',
-        data: tempData.slice(1,100),
+        data: tempData,
         yAxisID:'A'
       },{
         label: 'pressure',
         borderColor: 'rgba(123, 12, 80, 0.1)',
         backgroundColor: 'rgba(123, 12, 80, 0.1)',
-        data: pressData.slice(1, 100),
+        data: pressData,
         yAxisID:'B'
       },
       {
         label: 'humidity',
         borderColor: 'rgba(50, 59, 80, 0.1)',
         backgroundColor: 'rgba(50, 59, 80, 0.1)',
-        data: humData.slice(1, 100),
+        data: humData,
       }
     ]
   },
@@ -38,8 +38,8 @@ var myChart = new Chart(ctx, {
         type:'linear',
         position:'right',
         ticks:{
-          max:1013,
-          min:1011
+          max:1020,
+          min:1015
         }
       }]
     }

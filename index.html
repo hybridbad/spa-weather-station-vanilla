@@ -63,7 +63,7 @@
                     <i class="fas fa-temperature-low fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Temperature</h6>
-                  <h1 class="display-1" id="temperaturePoint">-</h1>
+                  <h1 class="display-2" id="temperaturePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
                     <i class="fas fa-tint fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Humidity</h6>
-                  <h1 class="display-1" id="humidityPoint">-</h1>
+                  <h1 class="display-2" id="humidityPoint">-</h1>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
                     <i class="fas fa-tachometer-alt fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Pressure</h6>
-                  <h1 class="display-1" id="pressurePoint">-</h1>
+                  <h1 class="display-2" id="pressurePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                     <i class="fa fa-share fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Last update</h6>
-                  <h1 class="display-1" id="datePoint">-</h1>
+                  <h1 class="display-2" id="datePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -149,6 +149,15 @@
                       >Pressure</a
                     >
                   </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href=""
+                      data-target="#tab4"
+                      data-toggle="tab"
+                      >Combined</a
+                    >
+                  </li>
                 </ul>
                 <br />
                 <div id="tabsJustifiedContent" class="tab-content">
@@ -171,6 +180,14 @@
                       <div class="row">
                         <h4>Pressure</h4>
                         <canvas id="press" width="400" height="100"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tab4">
+                    <div class="list-group">
+                      <div class="row">
+                        <h4>Combined</h4>
+                        <canvas id="all" width="400" height="100"></canvas>
                       </div>
                     </div>
                   </div>

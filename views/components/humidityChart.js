@@ -7,6 +7,8 @@ var myChart = new Chart(ctx, {
     datasets: [
       {
         label: 'humidity',
+        borderColor: 'rgba(250, 120, 80, 0.1)',
+        backgroundColor: 'rgba(250, 120, 80, 0.3)',
         data: humData
       },
     ]

@@ -94,8 +94,9 @@ const Utils = {
     // eslint-disable-next-line no-unused-vars
     let id = data.getDatesData();
 
+    console.log(all);
     // document.getElementById('weather-data').innerHTML = html;
-    // document.getElementById('all').innerHTML = eval(all);
+    document.getElementById('all').innerHTML = eval(all);
     document.getElementById('temp').innerHTML = eval(temperature);
     document.getElementById('hum').innerHTML = eval(humidity);
     document.getElementById('press').innerHTML = eval(pressure);
