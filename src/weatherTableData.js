@@ -9,7 +9,7 @@ class WeatherTableData {
   }
 
   getRecord(id) {
-    let result = this.list.filter(record => record.getId() == id);
+    let result = this.list.filter(record => record.id == id);
     return result[0];
   }
 

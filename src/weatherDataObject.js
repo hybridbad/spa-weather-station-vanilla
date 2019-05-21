@@ -2,7 +2,8 @@
 'use strict';
 
 class WeatherDataObject {
-  constructor(temperature, pressure, humidity, date) {
+  constructor(temperature, pressure, humidity, date, id) {
+    this.id = id;
     this.temperature = temperature;
     this.pressure = pressure; //change this to title
     this.humidity = humidity;

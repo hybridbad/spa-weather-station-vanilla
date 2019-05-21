@@ -12,10 +12,8 @@ let api = {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
         let apiData = JSON.parse(xhr.response);
-        //create list of articles
         let response = Utils.createWeatherObjects(apiData);
 
-        //create and insert html of articles into <div id='articles'>
         Utils.outputWeatherObjectsTable(response.list);
         Utils.updateWeatherPointsDashboard(response.list);
         Utils.createWeatherChart(response);

@@ -68,21 +68,25 @@ const Utils = {
   },
 
   updateWeatherPointsDashboard: list => {
+    let length = list.length;
+    let temperature = parseFloat(list[length - 1].temperature).toFixed(2);
+    let humidity = parseFloat(list[length - 1].humidity).toFixed(2);
+    let pressure = parseFloat(list[length - 1].pressure).toFixed(2);
+
+    //Date
     function addZero(i) {
+      //adds a 0 if <10
       if (i < 10) {
         i = '0' + i;
       }
       return i;
     }
-    let length = list.length;
-    let temperature = parseFloat(list[length - 1].temperature).toFixed(2);
-    let humidity = parseFloat(list[length - 1].humidity).toFixed(2);
-    let pressure = parseFloat(list[length - 1].pressure).toFixed(2);
     let date = new Date(list[length - 1].date);
     let hours = addZero(date.getHours());
     let minutes = addZero(date.getMinutes());
     let seconds = addZero(date.getSeconds());
     let time = hours + ':' + minutes + ':' + seconds;
+    //Date
 
     document.getElementById('temperaturePoint').innerHTML = temperature;
     document.getElementById('humidityPoint').innerHTML = humidity;
