@@ -105,6 +105,15 @@
             </div>
           </div>
           <hr />
+
+          <!-- Date ranger picker -->
+          <div>
+            <input id="datetimepicker-initial" class="datetimepicker type="text">
+            <input id="datetimepicker-final" class="datetimepicker" type="text">
+            <input id="datetimepicker-submit" type="submit">
+          </div>
+          <hr />
+          
           <!-- Table Data -->
           <div class="row mb-3">
             <div class="col-lg-12 col-md-12">
@@ -113,9 +122,9 @@
               </div>
             </div>
           </div>
+          <hr />
 
           <!-- GRAPHS -->
-          <hr />
           <h2 class="sub-header">Graphs</h2>
           <div class="row mb-12">
             <div class="clearfix"></div>
@@ -183,8 +192,10 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <link href="node_modules/jquery-datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
 
     <script>
       $(document).ready(function() {

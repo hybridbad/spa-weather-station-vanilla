@@ -18,7 +18,9 @@
     "url": "https://github.com/hybridbad/spa-weather-station-vanilla.git/issues"
   },
   "homepage": "https://github.com/hybridbad/spa-weather-station-vanilla.git#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jquery-datetimepicker": "^2.5.21"
+  },
   "devDependencies": {
     "jest": "^24.8.0",
     "nyc": "^14.1.1",
