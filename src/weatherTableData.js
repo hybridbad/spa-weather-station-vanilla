@@ -15,26 +15,39 @@ class WeatherTableData {
 
   getTemperatureData() {
     let result = this.list.map(record => record.temperature);
-    return result;
+    return result.slice(-100);
   }
 
   getHumidityData() {
     let result = this.list.map(record => record.humidity);
-    return result;
+    return result.slice(-100);
   }
 
   getPressureData() {
     let result = this.list.map(record => record.pressure);
-    return result;
+    return result.slice(-100);
   }
 
   getDatesData() {
-    let result = this.list.map(record => record.date);
-    return result;
+    let result = this.list.map(record => {
+      let dateObj = new Date(record.date);
+      let hour = this.addZero(dateObj.getHours());
+      let minutes = this.addZero(dateObj.getMinutes());
+      let seconds = this.addZero(dateObj.getSeconds());
+      return hour + ':' + minutes + ':' + seconds;
+    });
+    return result.slice(-100);
   }
 
   getTableData() {
     return this.list;
+  }
+
+  addZero(i) {
+    if (i < 10) {
+      i = '0' + i;
+    }
+    return i;
   }
 }
 

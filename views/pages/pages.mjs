@@ -7,6 +7,14 @@ let Home = {
     <h3> Head line page </h3>
     </section>
     `;
+
+    var myVar = setInterval(myTimer, 1000);
+
+    function myTimer() {
+      var d = new Date();
+      document.getElementById('demo').innerHTML = d.toLocaleTimeString();
+    }
+
     api.getData();
     return view;
   }

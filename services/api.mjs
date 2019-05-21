@@ -17,10 +17,13 @@ let api = {
 
         //create and insert html of articles into <div id='articles'>
         Utils.outputWeatherObjectsTable(response.list);
+        Utils.updateWeatherPointsDashboard(response.list);
+        Utils.createWeatherChart(response);
       }
     };
   },
 
+  // No need for this at the moment
   getWeatherChart: function() {
     let url = `https://quiet-everglades-27917.herokuapp.com/api/data`;
 

@@ -45,22 +45,49 @@ const Utils = {
   // Output table with all Data
   outputWeatherObjectsTable: list => {
     let html = '';
-    html += `<table>`;
+    html += `<table class="table table-striped">`;
+    html += `<thead class="thead-inverse">`;
     html += `<tr>`;
     html += `<th>Temperature</th>`;
     html += `<th>Pressure</th>`;
     html += `<th>Humidity</th>`;
+    html += `<th>Date</th>`;
     html += `</tr>`;
-    for (let i = 0; i < list.length; i++) {
+    html += `</thead>`;
+    for (let i = list.length - 1; i > list.length - 12; i--) {
       const element = list[i];
       html += `<tr>`;
-      html += `<td>${element.temperature}</td>`;
-      html += `<td>${element.pressure}</td>`;
-      html += `<td>${element.humidity}</td>`;
+      html += `<td>${parseFloat(element.temperature).toFixed(2)}</td>`;
+      html += `<td>${parseFloat(element.pressure).toFixed(2)}</td>`;
+      html += `<td>${parseFloat(element.humidity).toFixed(2)}</td>`;
+      html += `<td>${new Date(element.date).toLocaleString()}</td>`;
       html += `</tr>`;
     }
     html += `</table>`;
     document.getElementById('weather-data').innerHTML = html;
+  },
+
+  updateWeatherPointsDashboard: list => {
+    function addZero(i) {
+      if (i < 10) {
+        i = '0' + i;
+      }
+      return i;
+    }
+    let length = list.length;
+    let temperature = parseFloat(list[length - 1].temperature).toFixed(2);
+    let humidity = parseFloat(list[length - 1].humidity).toFixed(2);
+    let pressure = parseFloat(list[length - 1].pressure).toFixed(2);
+    let date = new Date(list[length - 1].date);
+    let hours = addZero(date.getHours());
+    let minutes = addZero(date.getMinutes());
+    let seconds = addZero(date.getSeconds());
+    let time = hours + ':' + minutes + ':' + seconds;
+
+    document.getElementById('temperaturePoint').innerHTML = temperature;
+    document.getElementById('humidityPoint').innerHTML = humidity;
+    document.getElementById('pressurePoint').innerHTML = pressure;
+    document.getElementById('datePoint').innerHTML = time;
   },
 
   // Creates a chart based on the available data
@@ -72,7 +99,7 @@ const Utils = {
     let id = data.getDatesData();
 
     // document.getElementById('weather-data').innerHTML = html;
-    document.getElementById('all').innerHTML = eval(all);
+    // document.getElementById('all').innerHTML = eval(all);
     document.getElementById('temp').innerHTML = eval(temperature);
     document.getElementById('hum').innerHTML = eval(humidity);
     document.getElementById('press').innerHTML = eval(pressure);
