@@ -4,6 +4,7 @@
   "description": "SPA",
   "main": "app.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "jest --verbose --coverage",
     "start": "node node_modules/http-server/bin/http-server -p 8080"
   },

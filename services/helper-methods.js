@@ -85,9 +85,13 @@ const Utils = {
   // Creates a chart based on the available data
   createWeatherChart: response => {
     let data = response;
+    // eslint-disable-next-line no-unused-vars
     let tempData = data.getTemperatureData();
+    // eslint-disable-next-line no-unused-vars
     let humData = data.getHumidityData();
+    // eslint-disable-next-line no-unused-vars
     let pressData = data.getPressureData();
+    // eslint-disable-next-line no-unused-vars
     let id = data.getDatesData();
 
     // document.getElementById('weather-data').innerHTML = html;
