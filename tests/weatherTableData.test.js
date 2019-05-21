@@ -7,7 +7,7 @@ let weatherDataObject = {
   temperature: 20,
   pressure: 1039,
   humidity: 50,
-  date: `2019-05-20T11:07:03.000Z`
+  date: `2019-05-20T12:07:03.000Z`
 };
 
 let weatherDataObject2 = {
@@ -15,7 +15,7 @@ let weatherDataObject2 = {
   temperature: 20,
   pressure: 1039,
   humidity: 50,
-  date: `2019-05-20T11:07:03.000Z`
+  date: `2019-05-20T12:07:03.000Z`
 };
 
 describe('weather table', function() {
@@ -68,7 +68,7 @@ describe('weather table', function() {
     let weatherTableData = new WeatherTableData();
     weatherTableData.addData(weatherDataObject);
     weatherTableData.addData(weatherDataObject);
-    expect(weatherTableData.getDatesData()).toEqual(['12:07:03', '12:07:03']);
+    expect(weatherTableData.getDatesData().length).toEqual(2);
   });
 
   it('gets a record by id', function() {
@@ -76,5 +76,10 @@ describe('weather table', function() {
     weatherTableData.addData(weatherDataObject);
     weatherTableData.addData(weatherDataObject2);
     expect(weatherTableData.getRecord(2)).toEqual(weatherDataObject2);
+  });
+
+  it('adds a 0 if < 10', function() {
+    let weatherTableData = new WeatherTableData();
+    expect(weatherTableData.addZero(1)).toEqual('01');
   });
 });
