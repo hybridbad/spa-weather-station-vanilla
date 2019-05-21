@@ -1,4 +1,4 @@
-import Utils from './helper-methods.mjs';
+import Utils from './helper-methods.js';
 let xhr = new XMLHttpRequest();
 
 let api = {

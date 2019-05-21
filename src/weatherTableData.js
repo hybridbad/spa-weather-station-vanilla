@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import DateConverter from '../services/date-processor.js';
+
 class WeatherTableData {
   constructor() {
     this.list = [];
@@ -15,39 +17,32 @@ class WeatherTableData {
 
   getTemperatureData() {
     let result = this.list.map(record => record.temperature);
-    return result.slice(-100);
+    return this.returnElements(result, 100);
   }
 
   getHumidityData() {
     let result = this.list.map(record => record.humidity);
-    return result.slice(-100);
+    return this.returnElements(result, 100);
   }
 
   getPressureData() {
     let result = this.list.map(record => record.pressure);
-    return result.slice(-100);
+    return this.returnElements(result, 100);
   }
 
   getDatesData() {
     let result = this.list.map(record => {
-      let dateObj = new Date(record.date);
-      let hour = this.addZero(dateObj.getHours());
-      let minutes = this.addZero(dateObj.getMinutes());
-      let seconds = this.addZero(dateObj.getSeconds());
-      return hour + ':' + minutes + ':' + seconds;
+      return DateConverter.processDate(record.date);
     });
-    return result.slice(-100);
+    return this.returnElements(result, 100);
   }
 
   getTableData() {
     return this.list;
   }
 
-  addZero(i) {
-    if (i < 10) {
-      i = '0' + i;
-    }
-    return i;
+  returnElements(result, size) {
+    return result.slice(-size);
   }
 }
 
