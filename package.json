@@ -1,12 +1,11 @@
 {
   "name": "WeatherSPA",
   "version": "1.0.0",
-  "description": "## SPA",
+  "description": "SPA",
   "main": "app.js",
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start": "node node_modules/http-server/bin/http-server -p 8080",
-    "babel-node": "babel-node --presets=env"
+    "start": "node node_modules/http-server/bin/http-server -p 8080"
   },
   "repository": {
     "type": "git",
@@ -18,15 +17,12 @@
     "url": "https://github.com/hybridbad/spa-weather-station-vanilla.git/issues"
   },
   "homepage": "https://github.com/hybridbad/spa-weather-station-vanilla.git#readme",
-  "dependencies": {
-    "chart.js": "^2.8.0",
-    "jest": "^24.8.0",
-    "nyc": "^14.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "jest": "^24.8.0",
+    "nyc": "^14.1.1",
     "@babel/preset-env": "^7.4.4",
     "babel-jest": "^20.0.3",
-    "babel-preset-jest": "^24.6.0",
     "eslint": "^5.16.0",
     "http-server": "^0.11.1"
   },

@@ -23,20 +23,20 @@ describe('weather table', function() {
     expect(new WeatherTableData()).toBeInstanceOf(WeatherTableData);
   });
 
-  it('adds an article to the list', function() {
+  it('adds an weatherRecord to the list', function() {
     let weatherTableData = new WeatherTableData();
     weatherTableData.addData(weatherDataObject);
     expect(weatherTableData.list).toHaveLength(1);
   });
 
-  it('retrieves an article from the list', function() {
+  it('retrieves an weatherRecordfrom the list', function() {
     let weatherTableData = new WeatherTableData();
     weatherTableData.addData(weatherDataObject);
     let weatherObject = weatherTableData.list.pop();
     expect(weatherObject).toEqual(weatherDataObject);
   });
 
-  it('retrieves all articles from the list', function() {
+  it('retrieves all weatherRecord from the list', function() {
     let weatherTableData = new WeatherTableData();
     weatherTableData.addData(weatherDataObject);
     weatherTableData.addData(weatherDataObject);
