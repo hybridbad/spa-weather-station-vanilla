@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/0cc85be0442c42388000/maintainability)](https://codeclimate.com/github/hybridbad/spa-weather-station-vanilla/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0cc85be0442c42388000/test_coverage)](https://codeclimate.com/github/hybridbad/spa-weather-station-vanilla/test_coverage)
+
 
 ### Technologies
 
