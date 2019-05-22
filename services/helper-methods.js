@@ -136,6 +136,27 @@ const Utils = {
     });
   },
 
+  createDarkskyWeatherCharts: data => {
+    let precipProbabilityData = data.getPrecipProbabilityData();
+    let precipIntensityData = data.getPrecipIntensityData();
+    let dates = data.getTimeData();
+
+    ChartGenerator.createOneChart({
+      name: 'precipitation probability',
+      id: 'dark-sky-graph',
+      yAxisData: precipProbabilityData,
+      xAxisData: dates
+    });
+
+    // ChartGenerator.createOneChart({
+    //   name: 'precipitation intensity',
+    //   id: 'rpi-humidity-graph',
+    //   yAxisData: precipIntensityData,
+    //   xAxisData: dates
+    // });
+
+  },
+
   updateWeatherCharts: data => {
     ChartGenerator.updateCharts(data)
   }

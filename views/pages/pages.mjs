@@ -7,8 +7,10 @@ let Home = {
     </section>
     `;
 
+    // api.getData();
+    // api.getDarkSkyData();
+    
     api.getData();
-    api.getDarkSkyData();
     return view;
   }
 };

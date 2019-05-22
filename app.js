@@ -5,8 +5,7 @@ import Utils from './services/helper-methods.js';
 import {dateRangePicker} from './services/date-range-filter.js';
 
 const routes = {
-  '/': Home,
-  '/charts': ShowChart,
+  '/': Home
 };
 
 const router = function() {
@@ -31,11 +30,10 @@ const router = function() {
 
 const onLoad = function() {
   
-  // dateRangePicker.init();
+  dateRangePicker.init();
 
   router();
 }
-
 window.addEventListener('load', onLoad);
 
-window.addEventListener('hashchange', router);
+// window.addEventListener('hashchange', router);
