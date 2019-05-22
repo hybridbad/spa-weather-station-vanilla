@@ -4,6 +4,7 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0cc85be0442c42388000/test_coverage)](https://codeclimate.com/github/hybridbad/spa-weather-station-vanilla/test_coverage)
 
+[![Build Status](https://travis-ci.org/hybridbad/spa-weather-station-vanilla.svg?branch=master)](https://travis-ci.org/hybridbad/spa-weather-station-vanilla)
 
 ### Technologies
 
