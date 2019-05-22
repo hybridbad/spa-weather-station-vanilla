@@ -1,12 +1,10 @@
 import weatherTableData from '../src/weatherTableData.js';
 import weatherDataObject from '../src/weatherDataObject.js';
-import temperature from '../views/components/temperatureChart.js';
-import humidity from '../views/components/humidityChart.js';
-import pressure from '../views/components/pressureChart.js';
 import DateConverter from '../services/date-processor.js';
 import all from '../views/components/allCharts.js';
+import ChartGenerator from '../services/chart-generator.js';
 
-let list = new weatherTableData();
+let list;
 
 const Utils = {
   //For routing
@@ -28,6 +26,7 @@ const Utils = {
   //Create weather objects
   createWeatherObjects: response => {
     let apiData = response;
+    list = new weatherTableData();
 
     for (let i = 0; i < apiData.length; i++) {
       const element = apiData[i];
@@ -45,6 +44,9 @@ const Utils = {
 
   // Output table with all Data
   outputWeatherObjectsTable: list => {
+    if (list.length == 0) {
+      return;
+    }
     let html = '';
     html += `<table class="table table-striped">`;
     html += `<thead class="thead-inverse">`;
@@ -55,7 +57,9 @@ const Utils = {
     html += `<th>Date</th>`;
     html += `</tr>`;
     html += `</thead>`;
-    for (let i = list.length - 1; i > list.length - 12; i--) {
+    const initialIndex = Math.max(list.length - 10, 0);
+
+    for (let i = list.length - 1; i > initialIndex; i--) {
       const element = list[i];
       html += `<tr>`;
       html += `<td>${parseFloat(element.temperature).toFixed(2)}</td>`;
@@ -83,22 +87,36 @@ const Utils = {
   },
 
   // Creates a chart based on the available data
-  createWeatherChart: response => {
-    let data = response;
-    // eslint-disable-next-line no-unused-vars
-    let tempData = data.getTemperatureData();
-    // eslint-disable-next-line no-unused-vars
-    let humData = data.getHumidityData();
-    // eslint-disable-next-line no-unused-vars
-    let pressData = data.getPressureData();
-    // eslint-disable-next-line no-unused-vars
-    let id = data.getDatesData();
+  createWeatherCharts: data => {
+    let temperatureData = data.getTemperatureData();
+    let humidityData = data.getHumidityData();
+    let pressureData = data.getPressureData();
+    let dates = data.getDatesData();
 
-    // document.getElementById('weather-data').innerHTML = html;
-    // document.getElementById('all').innerHTML = eval(all);
-    document.getElementById('temp').innerHTML = eval(temperature);
-    document.getElementById('hum').innerHTML = eval(humidity);
-    document.getElementById('press').innerHTML = eval(pressure);
+    ChartGenerator.createOneChart({
+      name: 'temperature',
+      id: 'rpi-temperature-graph',
+      yAxisData: temperatureData,
+      xAxisData: dates
+    });
+
+    ChartGenerator.createOneChart({
+      name: 'humidity',
+      id: 'rpi-humidity-graph',
+      yAxisData: humidityData,
+      xAxisData: dates
+    });
+
+    ChartGenerator.createOneChart({
+      name: 'pressure',
+      id: 'rpi-pressure-graph',
+      yAxisData: pressureData,
+      xAxisData: dates
+    });
+  },
+
+  updateWeatherCharts: data => {
+    ChartGenerator.updateCharts(data)
   }
 };
 

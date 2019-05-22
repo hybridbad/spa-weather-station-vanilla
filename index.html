@@ -1,30 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <link rel="stylesheet" href="style.css" />
-    <script type="module" src="app.js"></script>
-    <script src="node_modules/chart.js/dist/Chart.js"></script>
-    <title>Weather Station</title>
-  </head>
-  <body>
-    <div id="page_container"></div>
-    <div class="d-flex justify-content-center">
-      <div id="weather-data"></div>
-    </div>
-
-    <canvas id="all" width="400" height="100"></canvas>
-    <canvas id="temp" width="400" height="100"></canvas>
-    <canvas id="hum" width="400" height="100"></canvas>
-    <canvas id="press" width="400" height="100"></canvas>
-  </body>
-</html> -->
-
 <html>
   <head>
     <meta charset="utf-8" />
@@ -33,7 +6,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="module" src="app.js"></script>
-    <script src="node_modules/chart.js/dist/Chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <!-- <script src="node_modules/chart.js/dist/Chart.js"></script> -->
     <link
       rel="stylesheet"
       href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -108,8 +85,8 @@
 
           <!-- Date ranger picker -->
           <div>
-            <input id="datetimepicker-initial" class="datetimepicker type="text">
-            <input id="datetimepicker-final" class="datetimepicker" type="text">
+            <input id="datetimepicker-initial" class="datetimepicker" type="text" autocomplete="off">
+            <input id="datetimepicker-final" class="datetimepicker" type="text" autocomplete="off">
             <input id="datetimepicker-submit" type="submit">
           </div>
           <hr />
@@ -165,21 +142,23 @@
                     <div class="list-group">
                       <div class="row">
                         <h4>Temperature</h4>
-                        <canvas id="temp" width="400" height="100"></canvas>
+                        <canvas id="rpi-temperature-graph" width="400" height="150"></canvas>
                       </div>
                     </div>
                   </div>
                   <div class="tab-pane active" id="tab2">
-                    <div class="row">
-                      <h4>Humidity</h4>
-                      <canvas id="hum" width="400" height="100"></canvas>
+                    <div class="list-group">
+                      <div class="row">
+                        <h4>Humidity</h4>
+                        <canvas id="rpi-humidity-graph" width="400" height="150"></canvas>
+                      </div>
                     </div>
                   </div>
                   <div class="tab-pane" id="tab3">
                     <div class="list-group">
                       <div class="row">
                         <h4>Pressure</h4>
-                        <canvas id="press" width="400" height="100"></canvas>
+                        <canvas id="rpi-pressure-graph" width="400" height="150"></canvas>
                       </div>
                     </div>
                   </div>
@@ -191,7 +170,7 @@
       </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
     <script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
@@ -204,5 +183,10 @@
         });
       });
     </script>
+
+    <!-- <script type="module">
+      import ChartGenerator from "./services/chart-generator.js"
+      window.c = ChartGenerator;
+    </script> -->
   </body>
 </html>
