@@ -16,7 +16,7 @@ let api = {
 
         Utils.outputWeatherObjectsTable(response.list);
         Utils.updateWeatherPointsDashboard(response.list);
-        Utils.createWeatherChart(response);
+        Utils.createWeatherCharts(response);
       }
     };
   },
@@ -34,12 +34,10 @@ let api = {
         alert(`Error ${xhr.status}: ${xhr.statusText}`);
       } else {
         let apiData = JSON.parse(xhr.response);
-        console.log(apiData);
         let response = Utils.createWeatherObjects(apiData);
  
         Utils.outputWeatherObjectsTable(response.list);
-        // Utils.updateWeatherPointsDashboard(response.list);
-        // Utils.createWeatherChart(response);
+        Utils.updateWeatherCharts(response);
       }
     };
   },

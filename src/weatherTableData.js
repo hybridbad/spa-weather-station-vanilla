@@ -17,31 +17,33 @@ class WeatherTableData {
 
   getTemperatureData() {
     let result = this.list.map(record => record.temperature);
-    return this.returnElements(result, 100);
+    return this.returnElements(result);
   }
 
   getHumidityData() {
     let result = this.list.map(record => record.humidity);
-    return this.returnElements(result, 100);
+    return this.returnElements(result);
   }
 
   getPressureData() {
     let result = this.list.map(record => record.pressure);
-    return this.returnElements(result, 100);
+    return this.returnElements(result);
   }
 
   getDatesData() {
     let result = this.list.map(record => {
-      return DateConverter.processDate(record.date);
+      // return DateConverter.processDate(record.date);
+      const date = new Date(record.date);
+      return date;
     });
-    return this.returnElements(result, 100);
+    return this.returnElements(result);
   }
 
   getTableData() {
     return this.list;
   }
 
-  returnElements(result, size) {
+  returnElements(result, size = 0) {
     return result.slice(-size);
   }
 }
