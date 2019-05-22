@@ -21,6 +21,21 @@ let api = {
     };
   },
 
+  getDarkSkyData: function() {
+  
+      let corsUnblock = 'https://cors-anywhere.herokuapp.com/'
+      let url = 'https://api.darksky.net/forecast/a22ed4ddcc0df574eed15d7d838dde0a/51.5173735,-0.0731095';
+      xhr.open('GET', corsUnblock + url, true);
+      xhr.send();
+      xhr.onload = function() {
+        let darkskyData = JSON.parse(xhr.response)
+        let response = Utils.createExternalWeatherObjects(darkskyData);
+        let twentyfourhours = response.list.slice(0, 25)
+        console.log(twentyfourhours)
+      }
+    
+  },
+
   getDataByDates: function (initial, final) {
     let initDate = initial.toISOString()
     let finalDate = final.toISOString()

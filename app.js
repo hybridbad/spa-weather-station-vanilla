@@ -6,7 +6,7 @@ import {dateRangePicker} from './services/date-range-filter.js';
 
 const routes = {
   '/': Home,
-  '/charts': ShowChart
+  '/charts': ShowChart,
 };
 
 const router = function() {
@@ -31,7 +31,7 @@ const router = function() {
 
 const onLoad = function() {
   
-  dateRangePicker.init();
+  // dateRangePicker.init();
 
   router();
 }

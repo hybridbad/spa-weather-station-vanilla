@@ -4,9 +4,12 @@ import temperature from '../views/components/temperatureChart.js';
 import humidity from '../views/components/humidityChart.js';
 import pressure from '../views/components/pressureChart.js';
 import DateConverter from '../services/date-processor.js';
+import externalWeatherDataObject from '../src/externalWeatherDataObject.js';
+import externalWeatherTableData from '../src/externalWeatherTableData.js';
 import all from '../views/components/allCharts.js';
 
 let list = new weatherTableData();
+let darkskyList = new externalWeatherTableData();
 
 const Utils = {
   //For routing
@@ -23,6 +26,24 @@ const Utils = {
     request.resource = r[0];
     request.id = r[1];
     return request;
+  },
+  
+// create darksky object
+  createExternalWeatherObjects: response => {
+    let darkskyData = response;
+  
+    for (let i = 0; i < darkskyData.hourly.data.length; i++) {
+      const element = darkskyData.hourly.data[i];
+  
+      let externalWeatherData = new externalWeatherDataObject(
+        element.time,
+        element.summary,
+        element.precipProbability,
+        element.precipIntensity
+      );
+      darkskyList.addData(externalWeatherData);
+    }
+    return darkskyList;
   },
 
   //Create weather objects
