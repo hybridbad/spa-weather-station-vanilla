@@ -35,6 +35,7 @@ const onLoad = function() {
 
   router();
 }
+
 window.addEventListener('load', onLoad);
 
 window.addEventListener('hashchange', router);
