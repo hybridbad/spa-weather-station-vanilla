@@ -30,6 +30,7 @@ let api = {
     
     xhr.onload = function() {
       let darkskyData = JSON.parse(xhr.response)
+      // console.log(darkskyData)
       let response = Utils.createExternalWeatherObjects(darkskyData);
       Utils.createDarkskyWeatherCharts(response);
     }
