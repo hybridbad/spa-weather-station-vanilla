@@ -141,8 +141,6 @@ const Utils = {
     let precipIntensityData = data.getPrecipIntensityData();
     let dates = data.getTimeData();
 
-    console.log(dates);
-
     ChartGenerator.createOneChart({
       name: 'precipitation probability',
       id: 'dark-sky-graph',
