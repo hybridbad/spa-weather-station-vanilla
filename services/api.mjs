@@ -1,5 +1,6 @@
 import Utils from './helper-methods.js';
 let xhr = new XMLHttpRequest();
+let xhr2 = new XMLHttpRequest();
 
 let api = {
   getData: function() {
@@ -24,13 +25,15 @@ let api = {
   },
 
   getDarkSkyData: function(callback) {
+    console.log('hello'); 
 
     let corsUnblock = 'https://cors-anywhere.herokuapp.com/'
     let url = 'https://api.darksky.net/forecast/a22ed4ddcc0df574eed15d7d838dde0a/51.5173735,-0.0731095';
-    xhr.open('GET', corsUnblock + url, true);
-    xhr.send();
-    xhr.onload = function() {
-      let darkskyData = JSON.parse(xhr.response)
+    xhr2.open('GET', corsUnblock + url, true);
+    xhr2.send();
+    
+    xhr2.onload = function() {
+      let darkskyData = JSON.parse(xhr2.response)
       let response = Utils.createExternalWeatherObjects(darkskyData);
       // let twentyfourhours = response.list.slice(0, 25)
       // console.log(response.getPrecipIntensityData());

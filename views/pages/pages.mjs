@@ -8,7 +8,7 @@ let Home = {
     `;
 
     // api.getData();
-    // api.getDarkSkyData();
+    api.getDarkSkyData();
     
     api.getData();
     return view;
