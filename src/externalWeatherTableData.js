@@ -14,7 +14,7 @@ class ExternalWeatherTableData {
   }
 
   getTimeData() {
-    let result = this.list.map(record => record.time);
+    let result = this.list.map(record => new Date(record.time * 1000));
     return result
   }
 

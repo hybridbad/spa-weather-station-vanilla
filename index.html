@@ -54,7 +54,7 @@
                     <i class="fas fa-temperature-low fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Temperature</h6>
-                  <h1 class="display-1" id="temperaturePoint">-</h1>
+                  <h1 class="display-4" id="temperaturePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                     <i class="fas fa-tint fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Humidity</h6>
-                  <h1 class="display-1" id="humidityPoint">-</h1>
+                  <h1 class="display-4" id="humidityPoint">-</h1>
                 </div>
               </div>
             </div>
@@ -78,7 +78,7 @@
                     <i class="fas fa-tachometer-alt fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Pressure</h6>
-                  <h1 class="display-1" id="pressurePoint">-</h1>
+                  <h1 class="display-4" id="pressurePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -90,21 +90,16 @@
                     <i class="fa fa-share fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Last update</h6>
-                  <h1 class="display-1" id="datePoint">-</h1>
+                  <h1 class="display-4" id="datePoint">-</h1>
                 </div>
               </div>
             </div>
           </div>
           <hr />
-          <section>
-            <h2>Weather forecast</h2>
-            <canvas style="display: block;" id="dark-sky-graph" width="400" height="150"></canvas>
-        </section>
 
+          <!-- RPi section -->
           <section id="rpi">
-            <h2>Weather station stuff</h2>
-            <a class="toggle-view" href='#'>View forecast</a>
-            <hr />
+            <h2>Weather station data</h2>
             <!-- Date ranger picker -->
             <div>
               <label>Date range:</label>
@@ -193,6 +188,19 @@
   
           </section>
 
+          <section>
+              <h2>Chance of rain over next 48 hours</h2>
+              <p>
+                Provided by Dark Sky API.
+                <a href="https://darksky.net/forecast/51.5267,-0.0799/us12/en">See more</a>.
+              </p>
+              <canvas style="display: block;" id="dark-sky-graph" width="400" height="150"></canvas>
+          </section>
+
+          <footer>
+            &copy; Cool Hardware Crew 2019 <img src="favicon/android-icon-36x36.png">
+          </footer>
+  
         </div>
       </div>
     </div>
