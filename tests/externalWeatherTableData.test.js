@@ -55,7 +55,7 @@ describe('External Weather Object', function() {
   })
 
   it('gets time data', function() {
-    expect(externalWeatherDataTable.getTimeData()).toEqual([1558519323, 1558519500]);
+    expect(externalWeatherDataTable.getTimeData()).toEqual([new Date(1558519323 * 1000), new Date(1558519500 * 1000)]);
   })
 
   
