@@ -89,3 +89,9 @@ td {
   text-align: center;
   /* font-size: 20px; */
 }
+
+footer {
+  font-size: 130%;
+  text-align: right;
+  margin: 20px 0;
+}

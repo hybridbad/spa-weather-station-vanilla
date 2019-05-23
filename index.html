@@ -23,6 +23,20 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
   </head>
 
   <body>
@@ -40,7 +54,7 @@
                     <i class="fas fa-temperature-low fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Temperature</h6>
-                  <h1 class="display-1" id="temperaturePoint">-</h1>
+                  <h1 class="display-4" id="temperaturePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -52,7 +66,7 @@
                     <i class="fas fa-tint fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Humidity</h6>
-                  <h1 class="display-1" id="humidityPoint">-</h1>
+                  <h1 class="display-4" id="humidityPoint">-</h1>
                 </div>
               </div>
             </div>
@@ -64,7 +78,7 @@
                     <i class="fas fa-tachometer-alt fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Pressure</h6>
-                  <h1 class="display-1" id="pressurePoint">-</h1>
+                  <h1 class="display-4" id="pressurePoint">-</h1>
                 </div>
               </div>
             </div>
@@ -76,105 +90,129 @@
                     <i class="fa fa-share fa-5x"></i>
                   </div>
                   <h6 class="text-uppercase">Last update</h6>
-                  <h1 class="display-1" id="datePoint">-</h1>
+                  <h1 class="display-4" id="datePoint">-</h1>
                 </div>
               </div>
             </div>
           </div>
           <hr />
 
-          <!-- Date ranger picker -->
-          <div>
-            <input id="datetimepicker-initial" class="datetimepicker" type="text" autocomplete="off">
-            <input id="datetimepicker-final" class="datetimepicker" type="text" autocomplete="off">
-            <input id="datetimepicker-submit" type="submit">
-          </div>
-          <hr />
-          
-          <!-- Table Data -->
-          <div class="row mb-3">
-            <div class="col-lg-12 col-md-12">
-              <div class="table-responsive">
-                <div id="weather-data" style="overflow-y:auto"></div>
+          <!-- RPi section -->
+          <section id="rpi">
+            <h2>Weather station data</h2>
+            <!-- Date ranger picker -->
+            <div>
+              <label>Date range:</label>
+              <input id="datetimepicker-initial" class="datetimepicker" type="text" autocomplete="off">
+              <input id="datetimepicker-final" class="datetimepicker" type="text" autocomplete="off">
+              <input id="datetimepicker-submit" type="submit">
+            </div>
+            <hr />
+            
+            <!-- Table Data -->
+            <div class="row mb-3">
+              <div class="col-lg-12 col-md-12">
+                <div class="table-responsive">
+                  <div id="weather-data" style="overflow-y:auto"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <hr />
+            <hr />
 
-          <!-- GRAPHS -->
-          <h2 class="sub-header">Graphs</h2>
-          <div class="row mb-12">
-            <div class="clearfix"></div>
-            <div class="col-lg-12">
-              <div class="card card-default card-block">
-                <ul id="tabsJustified" class="nav nav-tabs nav-justified">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href=""
-                      data-target="#tab1"
-                      data-toggle="tab"
-                      >Temperature</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      href=""
-                      data-target="#tab2"
-                      data-toggle="tab"
-                      >Humidity</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href=""
-                      data-target="#tab3"
-                      data-toggle="tab"
-                      >Pressure</a
-                    >
-                  </li>
-                </ul>
-                <br />
-                <div id="tabsJustifiedContent" class="tab-content">
-                  <div class="tab-pane" id="tab1">
-                    <div class="list-group">
-                      <div class="row">
-                        <h4>Temperature</h4>
-                        <canvas id="rpi-temperature-graph" width="400" height="150"></canvas>
+            <!-- RPI GRAPHS -->
+            <h2 class="sub-header">Graphs</h2>
+            <div class="row mb-12">
+              <div class="clearfix"></div>
+              <div class="col-lg-12">
+                <div class="card card-default card-block">
+                  <ul id="tabsJustified" class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        href=""
+                        data-target="#tab1"
+                        data-toggle="tab"
+                        >Temperature</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link active"
+                        href=""
+                        data-target="#tab2"
+                        data-toggle="tab"
+                        >Humidity</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link"
+                        href=""
+                        data-target="#tab3"
+                        data-toggle="tab"
+                        >Pressure</a
+                      >
+                    </li>
+                  </ul>
+                  <br />
+                  <div id="tabsJustifiedContent" class="tab-content">
+                    <div class="tab-pane" id="tab1">
+                      <div class="list-group">
+                        <div class="row">
+                          <h4>Temperature</h4>
+                          <canvas id="rpi-temperature-graph" width="400" height="150"></canvas>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="tab-pane active" id="tab2">
-                    <div class="list-group">
-                      <div class="row">
-                        <h4>Humidity</h4>
-                        <canvas id="rpi-humidity-graph" width="400" height="150"></canvas>
+                    <div class="tab-pane active" id="tab2">
+                      <div class="list-group">
+                        <div class="row">
+                          <h4>Humidity</h4>
+                          <canvas id="rpi-humidity-graph" width="400" height="150"></canvas>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="tab-pane" id="tab3">
-                    <div class="list-group">
-                      <div class="row">
-                        <h4>Pressure</h4>
-                        <canvas id="rpi-pressure-graph" width="400" height="150"></canvas>
+                    <div class="tab-pane" id="tab3">
+                      <div class="list-group">
+                        <div class="row">
+                          <h4>Pressure</h4>
+                          <canvas id="rpi-pressure-graph" width="400" height="150"></canvas>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <hr />
+  
+          </section>
+
+          <section>
+              <h2>Chance of rain over next 48 hours</h2>
+              <p>
+                Provided by Dark Sky API.
+                <a href="https://darksky.net/forecast/51.5267,-0.0799/us12/en">See more</a>.
+              </p>
+              <canvas style="display: block;" id="dark-sky-graph" width="400" height="150"></canvas>
+          </section>
+
+          <footer>
+            &copy; Cool Hardware Crew 2019 <img src="favicon/android-icon-36x36.png">
+          </footer>
+  
         </div>
       </div>
     </div>
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
-    <script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+    <script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-    <link href="node_modules/jquery-datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css"
+    />
 
     <script>
       $(document).ready(function() {
@@ -183,10 +221,5 @@
         });
       });
     </script>
-
-    <!-- <script type="module">
-      import ChartGenerator from "./services/chart-generator.js"
-      window.c = ChartGenerator;
-    </script> -->
   </body>
 </html>

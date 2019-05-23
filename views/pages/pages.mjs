@@ -2,27 +2,22 @@ import { api } from '../../services/api.mjs';
 
 let Home = {
   render: function() {
-    let view = `<section class = 'section'>
-    <h3> Weather Station</h3>
-    </section>
-    `;
+    // let view = `<section class = 'section'>
+    // <h3> Weather Station</h3>
+    // </section>
+    // `;
 
+    // api.getData();
+    api.getDarkSkyData();
     api.getData();
-    return view;
+    // return view;
   }
 };
 
-let ShowChart = {
+let Error404 = {
   render: function() {
-    let view = `<section class = 'section'>
-    <h3> Chart </h3>
-    </section>
-    `;
-    api.getWeatherChart();
-    return view;
+    document.getElementById('main').innerHTML = "404 sucka";
   }
 };
 
-let Error404 = {};
-
-export { Home, ShowChart, Error404 };
+export { Home, Error404 };

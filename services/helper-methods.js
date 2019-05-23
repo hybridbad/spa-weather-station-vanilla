@@ -1,9 +1,12 @@
 import weatherTableData from '../src/weatherTableData.js';
 import weatherDataObject from '../src/weatherDataObject.js';
 import DateConverter from '../services/date-processor.js';
+import externalWeatherDataObject from '../src/externalWeatherDataObject.js';
+import externalWeatherTableData from '../src/externalWeatherTableData.js';
 import all from '../views/components/allCharts.js';
 import ChartGenerator from '../services/chart-generator.js';
 
+let darkskyList = new externalWeatherTableData();
 let list;
 
 const Utils = {
@@ -21,6 +24,24 @@ const Utils = {
     request.resource = r[0];
     request.id = r[1];
     return request;
+  },
+  
+// create darksky object
+  createExternalWeatherObjects: response => {
+    let darkskyData = response;
+  
+    for (let i = 0; i < darkskyData.hourly.data.length; i++) {
+      const element = darkskyData.hourly.data[i];
+  
+      let externalWeatherData = new externalWeatherDataObject(
+        element.time,
+        element.summary,
+        element.precipProbability,
+        element.precipIntensity
+      );
+      darkskyList.addData(externalWeatherData);
+    }
+    return darkskyList;
   },
 
   //Create weather objects
@@ -113,6 +134,29 @@ const Utils = {
       yAxisData: pressureData,
       xAxisData: dates
     });
+  },
+
+  createDarkskyWeatherCharts: data => {
+    let precipProbabilityData = data.getPrecipProbabilityData();
+    let precipIntensityData = data.getPrecipIntensityData();
+    let dates = data.getTimeData();
+
+    console.log(dates);
+
+    ChartGenerator.createOneChart({
+      name: 'precipitation probability',
+      id: 'dark-sky-graph',
+      yAxisData: precipProbabilityData,
+      xAxisData: dates
+    });
+
+    // ChartGenerator.createOneChart({
+    //   name: 'precipitation intensity',
+    //   id: 'rpi-humidity-graph',
+    //   yAxisData: precipIntensityData,
+    //   xAxisData: dates
+    // });
+
   },
 
   updateWeatherCharts: data => {
