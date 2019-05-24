@@ -134,6 +134,15 @@ const Utils = {
       yAxisData: pressureData,
       xAxisData: dates
     });
+
+    ChartGenerator.createEverythingGraph({
+      name: 'everything',
+      id: 'rpi-everything-graph',
+      temperatureData: temperatureData,
+      humidityData: humidityData,
+      pressureData: pressureData,
+      xAxisData: dates
+    });
   },
 
   createDarkskyWeatherCharts: data => {
