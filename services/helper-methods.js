@@ -83,9 +83,9 @@ const Utils = {
     for (let i = list.length - 1; i > initialIndex; i--) {
       const element = list[i];
       html += `<tr>`;
-      html += `<td>${parseFloat(element.temperature).toFixed(2)}</td>`;
-      html += `<td>${parseFloat(element.pressure).toFixed(2)}</td>`;
-      html += `<td>${parseFloat(element.humidity).toFixed(2)}</td>`;
+      html += `<td>${parseFloat(element.temperature).toFixed(2)} &deg;C</td>`;
+      html += `<td>${parseFloat(element.pressure).toFixed(2)} hPa</td>`;
+      html += `<td>${parseFloat(element.humidity).toFixed(2)} %</td>`;
       html += `<td>${new Date(element.date).toLocaleString()}</td>`;
       html += `</tr>`;
     }
