@@ -29,7 +29,13 @@ const ChartGenerator = {
         scales: {
           xAxes: [{
             type: 'time',
-            distribution: 'linear'
+            distribution: 'linear',
+            time: {
+              displayFormats: {
+                minute: "dd H:mm",
+                hour: "ddd H:mm"
+              }
+            }
           }],
         }
       }
@@ -111,6 +117,55 @@ const ChartGenerator = {
       chart.config.data.labels = filteredData.dates;
       chart.config.data.datasets[0].data = filteredData[name];
       chart.update();
+    });
+  },
+
+  createDarkskyChart: function(options) {
+    const elementId = options.id;
+    const xAxisData = options.xAxisData;
+    const yAxisData = options.yAxisData;
+
+    const ctx = document.getElementById(elementId);
+    ctx.getContext('2d');
+    console.log('whut');
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: xAxisData,
+        datasets: [
+          {
+            pointRadius: 0,
+            data: yAxisData
+          },
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'linear',
+            time: {
+              displayFormats: {
+                hour: "ddd hA"
+              }
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 1,
+              stepSize: 0.2,
+              callback: function(tick) {
+                return (tick * 100).toString() + '%';
+              }      
+            }
+          }]
+        }
+      }
     });
   }
 
